@@ -1,0 +1,31 @@
+name: Gold News - Daily Digest (06:00 Bangkok)
+
+on:
+  schedule:
+    # 06:00 Bangkok = 23:00 UTC (previous day)
+    - cron: "0 23 * * *"
+  workflow_dispatch:  # Allow manual trigger
+
+jobs:
+  daily-digest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      
+      - name: Install dependencies
+        run: |
+          pip install -r python/requirements.txt
+      
+      - name: Run Daily Digest
+        env:
+          FCM_SERVER_KEY: ${{ secrets.FCM_SERVER_KEY }}
+        run: |
+          python python/main.py --mode daily

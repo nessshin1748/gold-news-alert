@@ -1,0 +1,32 @@
+name: Gold News - Breaking Alert (Every 15 min)
+
+on:
+  schedule:
+    # Every 15 minutes during market hours (06:00-02:00 Bangkok = 23:00-19:00 UTC)
+    - cron: "*/15 23-23 * * *"   # 06:00-23:59 Bangkok
+    - cron: "*/15 0-18 * * *"    # 00:00-19:00 Bangkok (next day)
+  workflow_dispatch:  # Allow manual trigger
+
+jobs:
+  breaking-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      
+      - name: Install dependencies
+        run: |
+          pip install -r python/requirements.txt
+      
+      - name: Run Breaking News Check
+        env:
+          FCM_SERVER_KEY: ${{ secrets.FCM_SERVER_KEY }}
+        run: |
+          python python/main.py --mode breaking
