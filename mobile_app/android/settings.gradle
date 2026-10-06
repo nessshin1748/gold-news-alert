@@ -6,8 +6,11 @@ pluginManagement {
     }
     // Use FLUTTER_ROOT from environment (set by flutter-action on CI)
     def flutterRoot = System.getenv('FLUTTER_ROOT')
+    println "FLUTTER_ROOT = $flutterRoot"
     if (flutterRoot) {
-        includeBuild("${flutterRoot}/packages/flutter_tools/gradle")
+        def pluginPath = "${flutterRoot}/packages/flutter_tools/gradle"
+        println "Including Flutter Gradle Plugin from: $pluginPath"
+        includeBuild(pluginPath)
     } else {
         // Fallback for local development
         includeBuild("C:/Users/DG/flutter/packages/flutter_tools/gradle")
