@@ -1,12 +1,14 @@
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    id "com.google.gms.google-services"
+    id "dev.flutter.flutter-gradle-plugin"
+}
+
 def localProperties = new Properties()
 def localPropertiesFile = rootProject.file("local.properties")
 if (localPropertiesFile.exists()) {
     localProperties.load(new FileInputStream(localPropertiesFile))
-}
-
-def flutterRoot = localProperties.getProperty("flutter.sdk")
-if (flutterRoot == null) {
-    throw new GradleException("Flutter SDK not found. Define location with flutter.sdk in the local.properties file.")
 }
 
 def flutterVersionCode = localProperties.getProperty("flutter.versionCode")
@@ -19,11 +21,6 @@ if (flutterVersionName == null) {
     flutterVersionName = "1.0"
 }
 
-apply plugin: "com.android.application"
-apply plugin: "kotlin-android"
-apply plugin: "com.google.gms.google-services"
-apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
-
 android {
     namespace "com.goldnews.alert"
     compileSdkVersion flutter.compileSdkVersion
@@ -32,6 +29,7 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+        coreLibraryDesugaringEnabled true
     }
 
     kotlinOptions {
@@ -44,7 +42,7 @@ android {
 
     defaultConfig {
         applicationId "com.goldnews.alert"
-        minSdkVersion 23
+        minSdkVersion flutter.minSdkVersion
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
@@ -69,4 +67,5 @@ dependencies {
     implementation platform("com.google.firebase:firebase-bom:32.7.0")
     implementation "com.google.firebase:firebase-messaging-ktx"
     implementation "com.google.firebase:firebase-analytics-ktx"
+    coreLibraryDesugaring "com.android.tools:desugar_jdk_libs:2.0.4"
 }
