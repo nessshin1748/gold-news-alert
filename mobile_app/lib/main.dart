@@ -1,3 +1,4 @@
+import "dart:convert";
 import "package:flutter/material.dart";
 import "package:firebase_core/firebase_core.dart";
 import "package:firebase_messaging/firebase_messaging.dart";
@@ -52,7 +53,6 @@ Future<void> _showLocalNotification(RemoteMessage message) async {
   );
 }
 
-import "dart:convert";
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
