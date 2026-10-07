@@ -28,18 +28,10 @@ dependencyResolutionManagement {
     }
 }
 
-// Load Flutter plugin modules
-def localProperties = new Properties()
-def localPropertiesFile = file("local.properties")
-if (localPropertiesFile.exists()) {
-    localPropertiesFile.withInputStream { localProperties.load(it) }
+// Include Flutter app plugin loader as a plugin
+plugins {
+    id "dev.flutter.flutter-plugin-loader" version "1.0.0"
 }
-
-def flutterRoot = System.getenv('FLUTTER_ROOT') ?: "C:/Users/DG/flutter"
-flutterRoot = localProperties.getProperty("flutter.sdk", flutterRoot)
-
-// Load Flutter app plugin loader which handles plugin module inclusion
-apply from: "${flutterRoot}/packages/flutter_tools/gradle/app_plugin_loader.gradle"
 
 include ":app"
 
