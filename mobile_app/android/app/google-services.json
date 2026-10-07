@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "YOUR_PROJECT_NUMBER",
-    "project_id": "YOUR_PROJECT_ID",
-    "storage_bucket": "YOUR_PROJECT_ID.appspot.com"
+    "project_number": "205826319972",
+    "project_id": "gold-news-alert-5a313",
+    "storage_bucket": "gold-news-alert-5a313.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:YOUR_PROJECT_NUMBER:android:YOUR_APP_ID",
+        "mobilesdk_app_id": "1:205826319972:android:a56c4ed3c8d353a9e56171",
         "android_client_info": {
           "package_name": "com.goldnews.alert"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "YOUR_API_KEY"
+          "current_key": "AIzaSyCBbkoIlP3fqTBdNUQeCQq25q2S6pYV-2g"
         }
       ],
       "services": {
