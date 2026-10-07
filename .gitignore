@@ -1,0 +1,32 @@
+# Gradle
+.gradle/
+build/
+*.gradle.kts
+!**/gradle/wrapper/gradle-wrapper.jar
+
+# IDE
+.idea/
+*.iml
+.vscode/
+
+# Flutter
+.dart_tool/
+.packages
+.pub-cache/
+flutter_*.log
+
+# Android
+android/.gradle/
+android/build/
+android/app/build/
+android/app/.cxx/
+android/gradle-*.zip
+android/gradle-extracted/
+android/gradle-temp/
+
+# Local properties
+local.properties
+
+# OS
+.DS_Store
+Thumbs.db
