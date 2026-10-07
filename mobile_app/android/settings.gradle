@@ -29,13 +29,14 @@ dependencyResolutionManagement {
 }
 
 // Load Flutter plugin modules
-def flutterRoot = System.getenv('FLUTTER_ROOT') ?: "C:/Users/DG/flutter"
 def localProperties = new Properties()
 def localPropertiesFile = file("local.properties")
 if (localPropertiesFile.exists()) {
-    localPropertiesFile.withReader("UTF-8") { reader -> properties.load(reader) }
-    flutterRoot = properties.getProperty("flutter.sdk", flutterRoot)
+    localPropertiesFile.withInputStream { localProperties.load(it) }
 }
+
+def flutterRoot = System.getenv('FLUTTER_ROOT') ?: "C:/Users/DG/flutter"
+flutterRoot = localProperties.getProperty("flutter.sdk", flutterRoot)
 
 // Load Flutter app plugin loader which handles plugin module inclusion
 apply from: "${flutterRoot}/packages/flutter_tools/gradle/app_plugin_loader.gradle"
