@@ -17,6 +17,11 @@ pluginManagement {
     }
 }
 
+// Include Flutter app plugin loader
+plugins {
+    id "dev.flutter.flutter-plugin-loader" version "1.0.0"
+}
+
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.PREFER_SETTINGS)
     repositories {
@@ -26,11 +31,6 @@ dependencyResolutionManagement {
             url = "https://storage.googleapis.com/download.flutter.io"
         }
     }
-}
-
-// Include Flutter app plugin loader as a plugin
-plugins {
-    id "dev.flutter.flutter-plugin-loader" version "1.0.0"
 }
 
 include ":app"
